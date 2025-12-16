@@ -1,0 +1,57 @@
+# Binaries
+springstreet
+springstreet-api
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary
+*.test
+
+# Output of the go coverage tool
+*.out
+
+# Dependency directories
+vendor/
+
+# Go workspace file
+go.work
+
+# Generated code
+gen/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+spring_street.db
+
+# Logs
+*.log
+logs/
+
+# Build artifacts
+build/
+dist/
+
+# Temporary files
+tmp/
+temp/

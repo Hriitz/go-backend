@@ -1,0 +1,82 @@
+# Git
+.git
+.gitignore
+
+# Documentation
+*.md
+!README.md
+docs/
+
+# Build artifacts
+build/
+dist/
+*.exe
+springstreet
+springstreet-api
+
+# Generated code (will be generated in container)
+gen/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+spring_street.db
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Test files
+test/
+*_test.go
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Deployment configs (not needed in image)
+deployments/
+
+# Scripts (not needed in image)
+scripts/
+
+# Analysis and migration docs
+*_ANALYSIS.md
+*_MIGRATION*.md
+*_GUIDE.md
+*_STEPS.md
+*_FIX.md
+*_SETUP.md
+*_START*.md
+*_REORGANIZATION.md
+
+
+
+
+
+
+
+
+
+
+
+
+

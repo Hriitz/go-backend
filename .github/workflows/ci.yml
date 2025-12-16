@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.24'
+    
+    - name: Install dependencies
+      run: go mod download
+    
+    - name: Install Goa
+      run: go install goa.design/goa/v3/cmd/goa@latest
+    
+    - name: Generate code
+      run: goa gen springstreet/api/design
+    
+    - name: Update dependencies
+      run: go mod tidy
+    
+    - name: Run tests
+      run: go test ./...
+    
+    - name: Build
+      run: go build -o springstreet cmd/api/main.go
+    
+    - name: Verify metrics endpoint compiles
+      run: |
+        # Check that metrics package compiles correctly
+        go build ./internal/metrics/...
+        # Verify main.go compiles with metrics integration
+        go build -o /dev/null ./cmd/api/main.go
+    
+    - name: Check Prometheus configuration
+      run: |
+        # Verify Prometheus config is valid YAML
+        python3 -c "import yaml; yaml.safe_load(open('monitoring/prometheus/prometheus.yml'))"
+        echo "✓ Prometheus configuration is valid"
+
+
